@@ -90,7 +90,7 @@ function uniquifyArray(array) {
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
 function doesWordExist(word,array) {
-  if (array.includes(word)) {return "the word exists"} else{return "the word doesn't exist"}
+  if (array.includes(word)) {return "true"} else{return "false"}
 }; console.log(doesWordExist("machines", wordsFind))
 
 
@@ -142,25 +142,26 @@ const matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
-function calculateProd(row){
-  let maxproduct=0;
-  for(i=0;i<row.length-3;i++){
-    const currentProd = row[i]*row[i+1]*row[i+2]*row[i+3];
-    if (currentProd>maxproduct){maxproduct=currentProd}
-  };
-  return maxproduct
-}
-function greatestProduct(arrayValue) {
-let rowsProducts = [];
-let maxproduct=0;
- for (const row of matrix){
-    rowsProducts.push(calculateProd(row));
-for(i=0;i<rowsProducts.length-3;i++){
-  const rowProd = row[i]*row[i+1]*row[i+2]*row[i+3];
-  if (rowProd>maxproduct){maxproduct=rowProd}
-}
-    
-}return maxproduct}
+
+function greatestProduct(arr){
+  let prod = 0;
+  
+  let max=0;
+  for(i=0;i<arr.length-3;i++){
+    for(j=0;j<arr.length-3;j++)
+    //horizontal
+    prod = arr[i][j] * arr[i][j + 1]* arr[i][j + 2]* arr[i][j + 3];
+    if (max < prod)
+      max = prod;
+    //vertical
+    prod = arr[i][j] * arr[i + 1][j]* arr[i + 2][j]* arr[i + 3][j];
+    if (max <  prod)
+    max =  prod;
+    prod = arr[i][j] * arr[i + 1][j + 1]* arr[i + 2][j + 2]* arr[i + 3][j + 3];
+    if (max <  prod)
+    max =  prod;
+} return max;
+  }
 
 console.log(greatestProduct(matrix))
 
