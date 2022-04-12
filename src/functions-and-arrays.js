@@ -142,19 +142,27 @@ const matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
+function calculateProd(row){
+  let maxproduct=0;
+  for(i=0;i<row.length-3;i++){
+    const currentProd = row[i]*row[i+1]*row[i+2]*row[i+3];
+    if (currentProd>maxproduct){maxproduct=currentProd}
+  };
+  return maxproduct
+}
+function greatestProduct(arrayValue) {
+let rowsProducts = [];
+let maxproduct=0;
+ for (const row of matrix){
+    rowsProducts.push(calculateProd(row));
+for(i=0;i<rowsProducts.length-3;i++){
+  const rowProd = row[i]*row[i+1]*row[i+2]*row[i+3];
+  if (rowProd>maxproduct){maxproduct=rowProd}
+}
+    
+}return maxproduct}
 
-// function product(arrayValue) {
-//   let product = 1;
-//   for (i=0;i<arrayValue.length;i++){
-//     product = product*arrayValue[i]};
-//  return product};
-
-// function greatestProduct(array){
-//  array.every(product(array))}
-
-// console.log(greatestProduct(matrix))
-
-
+console.log(greatestProduct(matrix))
 
 
 
