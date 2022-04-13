@@ -1,14 +1,14 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers(a, b) {if (a>b){return "number1 is bigger"} else if(b>a){return "number2 is bigger"} else if(a=b){return "numbers are equal"} else{return "inputs should be numbers"}}
+function maxOfTwoNumbers(a, b) {if (a>b){return "number1 is bigger"} else if(b>a){return "number2 is bigger"} else if(a===b){return "numbers are equal"} else{return "inputs should be numbers"}}
 
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
-function findLongestWord(words) {
+function findLongestWord(anyWords) {
   let longestWordNumber = 0;
     let longestWord = "";
-    for (i=0;i<words.length;i++){
-    if (words[i].length>longestWordNumber){longestWordNumber=words[i].length; longestWord=words[i]}
+    for (i=0;i<anyWords.length;i++){
+    if (anyWords[i].length>longestWordNumber){longestWordNumber=anyWords[i].length; longestWord=anyWords[i]}
   } return longestWord + " is the longest word with "+longestWordNumber+" letters"
 };
 console.log(findLongestWord(words))
@@ -18,10 +18,10 @@ console.log(findLongestWord(words))
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers(numbers) {
+function sumNumbers(anyNumbers) {
   let sum=0;
-  for (i=0;i<numbers.length;i++){
-    sum=sum+numbers[i];
+  for (i=0;i<anyNumbers.length;i++){
+    sum=sum+anyNumbers[i];
   }return sum
 };
 console.log(sumNumbers(numbers))
@@ -37,11 +37,8 @@ function sum() {}
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers(numbers) {
-  let sum=0;
-  for (i=0;i<numbers.length;i++){
-    sum=sum+numbers[i];
-  }return sum/numbers.length;
+function averageNumbers(anyNumbers) {
+  return sumNumbers(anyNumbers) / anyNumbers.length;
 }; 
 console.log(averageNumbers(numbersAvg))
 
@@ -79,8 +76,9 @@ function uniquifyArray(array) {
   for (i=0;i<array.length;i++){
     if (uniqueArray.includes(array[i])){
       continue
-    }uniqueArray.push(array[i])
-  }return uniqueArray
+    } else {uniqueArray.push(array[i])}
+  }
+  return uniqueArray
 }; console.log(uniquifyArray(wordsUnique))
 
 
@@ -90,8 +88,11 @@ function uniquifyArray(array) {
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
 function doesWordExist(word,array) {
-  if (array.includes(word)) {return "true"} else{return "false"}
-}; console.log(doesWordExist("machines", wordsFind))
+  if (array.includes(word)) 
+  {return "true"} 
+  else{return "false"}
+}; 
+console.log(doesWordExist("machines", wordsFind))
 
 
 
@@ -148,7 +149,7 @@ function greatestProduct(arr){
   
   let max=0;
   for(i=0;i<arr.length-3;i++){
-    for(j=0;j<arr.length-3;j++)
+    for(j=0;j<arr[i].length-3;j++)
     //horizontal
     prod = arr[i][j] * arr[i][j + 1]* arr[i][j + 2]* arr[i][j + 3];
     if (max < prod)
